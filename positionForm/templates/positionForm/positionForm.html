@@ -1,0 +1,20 @@
+{%  load static %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Должности</title>
+</head>
+<body>
+	<div>
+		<form action="#" method="post" autocomplete="off" class="container_form_left">
+			{% csrf_token  %}
+			{% for f in form %}
+				<div>{{f.label_tag}}{{f}}</div>										
+			{% endfor %}
+		</form>
+	</div>
+
+</body>
+</html>

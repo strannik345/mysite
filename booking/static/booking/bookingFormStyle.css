@@ -1,0 +1,178 @@
+body{
+  font-family: Arial;
+  font-size: 20px;
+  padding: 8px;
+}
+.split{
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;    
+}
+.left{
+    left: 0;
+    background-color: #f2f2f2;
+}
+.right{
+    right: 0;
+    background-color: #E4FEFF;
+}
+.container_form_left{
+    display: grid;
+    grid-row-gap: 15px; 
+    position: absolute;
+    grid-template-columns: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.container_form_left > div{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    display: grid;
+    grid-template-columns: 200px 300px; 
+}
+#rNum{
+    grid-template-columns: auto 50px;
+    justify-content: center;
+    grid-row-gap: 15px; 
+    text-align: center;
+    align-content: center;       
+}
+#rNum > label{
+    padding: 5px;
+}
+#rNum > input{
+    background-color: #f2f2f2;   
+    border: none;    
+    color: black;       
+}
+.container_form_left > div > div > img{
+    height: 20px;
+    width: 20px;
+}
+.container_form_left > div:last-child{
+    grid-template-columns: auto;    
+}
+.container_form_left > div:last-child > input{
+    border-radius: 10px;
+    height: 50px;   
+}
+input{
+    font-family: Arial;
+    font-size: 20px;
+}
+#container_form_right{
+    display: grid;
+    grid-template-rows: auto auto auto auto auto auto auto; 
+    grid-row-gap: 15px; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 800px;    
+}
+#container_form_right > div{
+    display: grid;
+    height: 40px;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+    grid-column-gap: 3px;
+    align-content: center;
+}
+.btn{
+    width: 65px;
+    height: 45px;    
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color: white; 
+    color: green; 
+    border: 2px solid #4CAF50;
+
+}
+.btn:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+.occupied{
+    background-color: #f44336;
+    border: 2px solid #f44336;
+    color: black;
+    width: 65px;
+    height: 45px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;  
+}
+.booking{
+    background-color: #4CAF50;
+    color: white;
+}
+.sideMenu {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+.sideMenu a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+#backSideMenu{
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+#disabled_right{
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);    
+}
+
+.sideMenu a:hover {
+    color: #f1f1f1;
+}
+
+.sideMenu .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+.leftMenu{
+    font-size:30px;
+    cursor:pointer;
+    color: black;
+}
+.errorlist{
+    display: none;
+}

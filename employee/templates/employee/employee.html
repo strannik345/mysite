@@ -1,0 +1,25 @@
+{% extends "../base.html" %}
+{%  load static %}
+
+
+{% block title %} 
+	<title>Должности</title>
+{% endblock %}
+
+{% block link_script %}
+	<link rel="stylesheet" type="text/css" href="{% static 'employee/employee.css' %}">
+	<script src="{% static 'employee/employee.js' %}"></script>	
+{% endblock %}
+
+{% block content %}
+	
+	<form action="#" method="post" autocomplete="off" id="form">
+		{% csrf_token  %}
+		{% for f in form %}			
+			<div>{{f.label_tag}}{{f}}</div>										
+			
+		{% endfor %}
+		<input type="submit" name="submit_employee" class="btn" value="Добавить сотрудника">
+	</form>
+
+{% endblock %}

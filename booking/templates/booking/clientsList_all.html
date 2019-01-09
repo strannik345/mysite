@@ -1,0 +1,30 @@
+{% extends "../base.html" %}
+
+{% block title %}
+	<title>Список постояльцев</title>
+{% endblock %}
+
+{% block content %}
+	<table class="table table-hover">
+		<thead>
+		    <tr>
+				<th scope="col">#</th>
+				<th scope="col">Фамилия Имя Отчество</th>
+				<th scope="col">Номер комнаты</th>
+				<th scope="col">Дата заселения</th>
+				<th scope="col">Дата выселения</th>
+			</tr>
+		</thead>
+		<tbody>
+	  		{% for client in object_list %}
+		  		<tr>
+					<th scope="row">{{client.id_room}}</th>
+		    	  	<td>{{client.surname}} {{client.first_name}} {{client.patronymic}}</td>
+		     	 	<td>{{client.room_number}}</td>
+		    	  	<td>{{client.checkin_date}}</td>
+		      		<td>{{client.checkout_date}}</td>
+		    	</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

@@ -1,0 +1,30 @@
+﻿{% extends "../base.html" %}
+
+{% block title %}
+	<title>Список сотрудников</title>	
+{% endblock %}
+
+{% block content %}
+	<table class="table table-hover">
+	  <thead>
+	    <tr>
+	      <th scope="col">#</th>
+	      <th scope="col">Фамилия Имя Отчество</th>
+	      <th scope="col">Должность</th>
+	      <th scope="col">Место жительства</th>
+	      <th scope="col">Дата устройства на работу</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	  	{% for employee in object_list %}
+		  	<tr>
+				<th scope="row">{{employee.employee_id}}</th>
+		      	<td>{{employee.surname}} {{employee.first_name}} {{employee.patronymic}}</td>
+		      	<td>{{employee.position_name.position_name}}</td>
+		      	<td>{{employee.adress}}</td>
+		      	<td>{{employee.employment_data}}</td>
+		    </tr>
+		{% endfor %}
+	  </tbody>
+	</table>
+{% endblock %}

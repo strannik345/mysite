@@ -1,0 +1,127 @@
+{% extends "../base.html "%}
+{%  load static %}
+
+{% block title %}
+	<title>Booking Form</title>
+{% endblock %}
+
+{% block link_script %}
+	<link rel="stylesheet" href="{% static 'booking/bookingFormStyle.css' %}">
+	<script src="{% static 'booking/script.js' %}"></script>
+{% endblock %}	  
+
+{% block content %}
+	
+		<div> {{number}}</div>
+	
+	<div class="split left">
+		<span class="leftMenu" onclick="openNav()">&#9776; menu</span>
+		<form action="#" method="post" autocomplete="off" class="container_form_left">
+		{% csrf_token  %}
+		{% for f in form %}
+		<div {% if f.name == 'room_number' %} id="rNum" {% endif %}>
+			{% if f.name == 'checkin_date' or f.name == 'checkout_date' %}
+				{{f.label_tag}}
+				<div>
+					{{f}}
+				</div>
+			{% else %}
+				{{f.label_tag}}{{f}}
+			{% endif %}			
+		</div>
+		{% endfor %}			
+		<div>
+			<input type="submit" value="Забронировать" >
+		</div>	
+		</form>
+	</div>
+	<div class="split right">
+		<div id="container_form_right">				
+		<div class="1st_floor">				
+			<button class="btn">101</button>
+			<button class="btn">102</button>
+			<button class="btn">103</button>
+			<button class="btn">104</button>
+			<button class="btn">105</button>
+			<button class="btn">106</button>
+			<button class="btn">107</button>
+			<button class="btn">108</button>
+			<button class="btn">109</button>
+			<button class="btn">110</button>
+		</div>
+		<div class="2nd_floor">				
+			<button class="btn">201</button>
+			<button class="btn">202</button>
+			<button class="btn">203</button>
+			<button class="btn">204</button>
+			<button class="btn">205</button>
+			<button class="btn">206</button>
+			<button class="btn">207</button>
+			<button class="btn">208</button>
+			<button class="btn">209</button>
+			<button class="btn">210</button>
+		</div>
+		<div class="3rd_floor">
+			<button class="btn">301</button>
+			<button class="btn">302</button>
+			<button class="btn">303</button>
+			<button class="btn">304</button>
+			<button class="btn">305</button>
+			<button class="btn">306</button>
+			<button class="btn">307</button>
+			<button class="btn">308</button>
+			<button class="btn">309</button>
+			<button class="btn">310</button>
+		</div>
+		<div class="4th_floor">
+			<button class="btn">401</button>
+			<button class="btn">402</button>
+			<button class="btn">403</button>
+			<button class="btn">404</button>
+			<button class="btn">405</button>
+			<button class="btn">406</button>
+			<button class="btn">407</button>
+			<button class="btn">408</button>
+			<button class="btn">409</button>
+			<button class="btn">410</button>
+		</div>
+		<div class="5th_floor">
+			<button class="btn">501</button>
+			<button class="btn">502</button>
+			<button class="btn">503</button>
+			<button class="btn">504</button>
+			<button class="btn">505</button>
+			<button class="btn">506</button>
+			<button class="btn">507</button>
+			<button class="btn">508</button>
+			<button class="btn">509</button>
+			<button class="btn">510</button>
+		</div>
+		<div class="6th_floor">
+			<button class="btn">601</button>
+			<button class="btn">602</button>
+			<button class="btn">603</button>
+			<button class="btn">604</button>
+			<button class="btn">605</button>
+			<button class="btn">606</button>
+			<button class="btn">607</button>
+			<button class="btn">608</button>
+			<button class="btn">609</button>
+			<button class="btn">610</button>
+		</div>
+		<div class="7th_floor">
+			<button class="btn">701</button>
+			<button class="btn">702</button>
+			<button class="btn">703</button>
+			<button class="btn">704</button>
+			<button class="btn">705</button>
+			<button class="btn">706</button>
+			<button class="btn">707</button>
+			<button class="btn">708</button>
+			<button class="btn">709</button>
+			<button class="btn">710</button>
+		</div>
+		</div>		
+	</div>
+	<div id="disabled_right"></div>
+{% endblock %}

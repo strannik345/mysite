@@ -1,0 +1,205 @@
+body{
+  font-family: Arial;
+  font-size: 20px;
+  padding: 8px;
+}
+.main_body{
+	width: 80%;
+	max-width: 1500px;
+	margin: 100px auto;	
+}
+.container{
+	width: 100%;
+	border: 5px solid black;
+	height: 500px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.container_top{
+	width: 100%;
+	height: 200px;
+	border-bottom: 5px solid black;	
+	display: flex;
+}
+.container_bottom{
+	width: 100%;
+	height: 200px;	
+	border-top: 10px solid black;	
+	display: flex;	
+}
+.room{
+	width: 20%;
+	height: 100%;
+	background-color: #98E783;
+	border: 5px solid black;
+	box-sizing: border-box;	
+}
+.room > a{
+	width: 100%;
+	height: 100%;
+	display: flex;	
+	align-items: center;
+	justify-content: center;
+	font: bold italic 30px sans-serif;
+}
+.around_modal{
+	display: none;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgba(0,0,0,0.4);
+}
+.grid_container{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	width: 400px;
+	background-color: #6A848C;
+	height: 500px;
+	display: none;
+	grid-template-columns: 200px 200px;
+	padding: 50px;
+	border-radius: 15px;	
+}
+.button, .number, .space{
+	grid-column-start: 1;
+	grid-column-end: 3;
+	text-align: center;	
+}
+.number > span{
+	font-size: 30px;
+	color: white;
+	padding-left: 35px;
+}
+.cross{
+	color: white;
+	position: relative;
+	right: -130px;
+	top: -35px;	
+	font-size: 50px;
+}
+.cross:hover{
+	color: black;
+	cursor: pointer;
+}
+.info{
+	display: flex;
+	border-bottom: 1px solid black;
+	border-radius: 50px;
+	background-color: #A4EAEE;
+	justify-content: center;
+	align-items: center;
+	font-size: 20px;
+}
+.button{
+	margin-top: 5px;
+	display: flex;
+	cursor: pointer;
+	border-radius: 50px;
+	justify-content: center;
+	align-items: center;
+	font-size: 20px;
+	border: 0px;
+}
+.button > span:after {  	
+ 	content: '  \00bb';  
+ 	opacity: 0;
+	top: 0;  
+	transition: 0.5s;
+}
+.button:hover{
+	background-color: #898989; 
+	color: white;
+}
+.button:hover span {
+ 	padding-right: 25px;
+}
+
+.button:hover span:after {
+	opacity: 1;
+  	right: 0;
+}
+.floor_container{
+	width: 80%;
+	max-width: 1500px;
+	margin: 10px auto;
+	display: flex;
+}
+.floor_button{
+	border: solid 0.5px #666;
+  	outline: none;
+ 	padding: 10px 16px;
+  	background-color: #f1f1f1;
+  	cursor: pointer;
+	height: 50px;
+	width: 14.285714285%;
+}
+.head{
+	width: 100%;
+	max-width: 1500px;
+	margin: 10px auto;
+	display: flex;
+}
+.head > span{
+	color: green;
+	font-size: 50px;
+	margin: 0 auto;
+}
+.floor_button:hover, .active{
+	background-color: #666;
+	color: white;
+}
+.sideMenu {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+.sideMenu a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+#backSideMenu{
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.sideMenu a:hover {
+    color: #f1f1f1;
+}
+
+.sideMenu .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+.leftMenu{
+	font-size:30px;
+	cursor:pointer;
+	color: black;
+}
+.occupied{
+	background-color: red;
+}
