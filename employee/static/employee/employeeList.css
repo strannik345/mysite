@@ -1,0 +1,55 @@
+td{
+	cursor: pointer;
+}
+.info{
+	height: 30px;
+	width: 100%;
+	background-color: green;
+	display: none;
+}
+#contextmenu{
+	display: none;
+	border-radius: 4px;
+	background-color: #898989;
+	color: #FFFFFF;
+}
+#contextmenu>li{
+	display: block;
+	width: 130px;
+	height: 25px;
+	padding-left: 3px;
+}
+#contextmenu>li:hover{
+	background-color: #C0C4ED;
+	cursor: pointer;
+}
+
+#current-rate{
+	grid-area: cr;
+}
+
+#new-rate{
+	grid-area: nr;
+}
+
+#new-rate-input{
+	grid-area: nri;
+}
+
+#save-new-rate{
+	grid-area: snr;
+}
+
+#rate-enter{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	width: 400px;
+	background-color: #6A848C;	
+	display: grid;
+	grid-template-columns: repeat(2,1fr);
+	grid-template-areas: 	"cr cr",
+							"nr nri",
+							"snr snr";
+}
