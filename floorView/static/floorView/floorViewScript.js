@@ -1,5 +1,29 @@
 var floor = 1;
+var room;
 window.addEventListener('load',function(){
+  $("#price_per_night").on('click', function (event) {
+      console.log(room);
+      let csrftoken = getCookie('csrftoken');
+      $.ajax({
+        url: "http://127.0.0.1:8000/floorView/change_cost",
+        beforeSend: function(xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+            
+        },
+        type: "POST",
+        data: {'room' : room,
+              'new_cost' : Math.random(),
+              },
+      })
+        .done(function(data){ 
+          ajax_room(room);                                                              
+        })
+        .fail(function () {
+          console.log('error');
+        });
+  });
 	var rooms=document.getElementsByClassName('room');
 	for (var i = 0; i < rooms.length; i++) {
 		rooms[i].addEventListener('click', show);
@@ -60,7 +84,7 @@ window.addEventListener('load',function(){
 });
 
 function ajax(){
-	var csrftoken = getCookie('csrftoken');
+	let csrftoken = getCookie('csrftoken');
  	$.ajax({
     url: "http://127.0.0.1:8000/floorView/rooms_occupied",
     beforeSend: function(xhr, settings) {
@@ -74,8 +98,6 @@ function ajax(){
     data: {'floor' : floor, },
   })
     .done(function(data){ 
-      console.log(data);
-      console.log(typeof(data)); 
       var elem = document.getElementsByClassName('container_top')[0]
       for(var i=0; i < elem.childNodes.length; i++)
       {
@@ -121,21 +143,12 @@ function ajax_room(room){
     data: {'room' : room, },
   })
     .done(function(data){ 
-      console.log(data.capacity);
-      console.log(data.room_number);
-      console.log(data.price_per_night);
-      console.log(typeof(data)); 
       document.getElementById("price_per_night").textContent = data.price_per_night + '$';
       document.getElementById("capacity").textContent = data.capacity + 'ч';
       document.getElementById("status");
       status = sessionStorage.getItem('room');
-      console.log(typeof(status));
-      console.log(status);
-      console.log(status.indexOf("occupied"));
-      console.log(typeof(status.indexOf("occupied")));
       if(status.indexOf("occupied")>-1)
       {
-        console.log("occupied");
         document.getElementById("status").textContent = "Занято";
       }
       else
@@ -150,7 +163,6 @@ function ajax_room(room){
     });
 }
 function show() {
-  console.log(this.className);
   sessionStorage.setItem('room', this.className);
 	var modal=document.getElementsByClassName("grid_container");
 	var around_modal=document.getElementsByClassName("around_modal");

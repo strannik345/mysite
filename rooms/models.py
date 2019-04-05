@@ -9,4 +9,4 @@ class rooms(models.Model):
 class occupied_info(models.Model):
 	room_number = models.ForeignKey('rooms', on_delete=models.PROTECT)
 	checkin_date = models.DateField()
-	checkout_date = models.DateField()
+	checkout_date = models.DateField()  

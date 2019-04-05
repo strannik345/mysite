@@ -31,4 +31,16 @@ def rooms_occupied(request):
 def room_info(request):	
 	room = rooms.objects.values().get(room_number=request.POST.get('room'))
 	json_room=json.dumps(room)
-	return HttpResponse(json_room)
+	print(room)
+	return HttpResponse(json_room) 
+
+def change_cost(request):
+	room = rooms.objects.get(room_number=request.POST.get('room'))
+	new_cost = request.POST.get('new_cost')
+	print(room)
+	print(new_cost)
+	room.price_per_night=new_cost
+	room.save()
+	print(room.price_per_night)
+	return HttpResponse(True) 
+
