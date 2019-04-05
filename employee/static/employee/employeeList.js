@@ -10,6 +10,13 @@ window.addEventListener("load", function(){
     		});
     	for_change=event.currentTarget.cells[0].textContent;
 	});
+	$("body").on('click', function(event) {
+		$("#contextmenu").hide();
+	});
+	$(".around-form").on('click', function(event) {    	    		
+        $(".around-form").hide();
+		$("#rate-enter").hide();	
+	});
 	$("#delete").on('click', function(event) {
 		event.preventDefault();
 		var csrftoken = getCookie('csrftoken');      
@@ -33,30 +40,58 @@ window.addEventListener("load", function(){
 		      console.log('error');
 		    });
 	});
-	// $("#increase-sallary-rate").on('click', function(event) {
-	// 	event.preventDefault();
-	// 	var csrftoken = getCookie('csrftoken');      
-	// 	  $.ajax({
-	// 	    url: "http://127.0.0.1:8000/employee/delete",
-	// 	    beforeSend: function(xhr, settings) {
-	// 	        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-	// 	            xhr.setRequestHeader("X-CSRFToken", csrftoken);
-	// 	        }
+	$("#increase-sallary-rate").on('click', function(event) {
+		event.preventDefault();
+		var csrftoken = getCookie('csrftoken');      
+		  $.ajax({
+		    url: "http://127.0.0.1:8000/employee/current_rate",
+		    beforeSend: function(xhr, settings) {
+		        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+		            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+		        }
 		        
-	// 	    },
-	// 	    type: "POST",
-	// 	    data: "JSON",		   
-	// 	    data: {'id' : for_change,
-	// 	          },
-	// 	  })
-	// 	    .done(function(){ 
-	// 	      $("body").load("list")		
-	// 	      console.log('done')		                                                              
-	// 	    })
-	// 	    .fail(function () {
-	// 	      console.log('error');
-	// 	    });
-	// });
+		    },
+		    type: "POST",
+		    dataType: "JSON",		   
+		    data: {'id' : for_change,
+		          },
+		  })
+		    .done(function(rate){ 
+		      $("#current-rate-value").text(rate);
+		      $("#contextmenu").hide();
+		      $(".around-form").show();
+		      $("#rate-enter").css('display', 'grid');			                                                              
+		    })
+		    .fail(function () {
+		      console.log('error');
+		    });
+	});
+	$("#save-new-rate").on('click', function(event) {
+		event.preventDefault();
+		var csrftoken = getCookie('csrftoken');      
+		  $.ajax({
+		    url: "http://127.0.0.1:8000/employee/new_rate",
+		    beforeSend: function(xhr, settings) {
+		        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+		            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+		        }
+		        
+		    },
+		    type: "POST",		   
+		    data: {	'rate' : $("#new-rate-input").val(),
+		    		'id' : for_change,
+		          },
+		  })
+		    .done(function(rate){ 
+		      $(".around-form").hide();
+		      $("#rate-enter").hide();		      			                                                              
+		    })
+		    .fail(function () {
+		      console.log('error');
+		    });
+		    document.location.reload(true);
+	});
+
 
 
 });

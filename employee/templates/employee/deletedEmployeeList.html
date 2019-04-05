@@ -7,7 +7,6 @@
 
 {% block link_script %}
 	<link rel="stylesheet" type="text/css" href="{% static 'employee/employeeList.css' %}">
-	<script src="{% static 'employee/employeeList.js' %}"></script>	
 {% endblock %}
 
 {% block content %}
@@ -19,7 +18,7 @@
 	      <th scope="col">Должность</th>
 	      <th scope="col">Место жительства</th>
 	      <th scope="col">Дата устройства на работу</th>
-	      <th scope="col">Зарплата</th>
+	      <th scope="col">Дата увольнения</th>
 	    </tr>
 	  </thead>
 	  <tbody>
@@ -27,26 +26,13 @@
 		  	<tr class="employee">
 				<th scope="row">{{employee.employee_id}}</th>
 		      	<td>{{employee.surname}} {{employee.first_name}} {{employee.patronymic}}</td>
-		      	<td>{{employee.position_name_id}}</td>
+		      	<td>{{employee.position_name}}</td>
 		      	<td>{{employee.adress}}</td>
 		      	<td>{{employee.employment_data}}</td>
-		      	<td>{{employee.sallary}}</td>
+		      	<td>{{employee.firing_data}}</td>
 		    </tr>
 		{% endfor %}
 	  </tbody>
-	</table>
-	<ul id="contextmenu">
-		<li id="delete">Удалить</li>
-		<li id="increase-sallary-rate">Изменить коэф.</li>		
-	</ul>
-	<div class="around-form"></div>
-		<form id="rate-enter" action="#">
-			<label  id="current-rate">Текущее значение коэффициента:</label>
-			<span id="current-rate-value"></span>
-			<label  id="new-rate">Новое значение коэффициента:</label>
-			<input id="new-rate-input" type="number" name="new-rate" step="0.01" min="1">
-			<button id="save-new-rate">Сохранить</button>
-		</form>
-	
+	</table>	
 	<div class="info"></div>
 {% endblock %}
