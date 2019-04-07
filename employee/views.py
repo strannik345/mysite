@@ -9,8 +9,8 @@ import json
 from positionForm.models import positions
 from .models import employee_form, employees, employees_deleted
 from positionForm.models import positions
-
-class employeeFormView(FormView):
+ 
+class employeeFormView(FormView): 
 
 	template_name ='employee/employee.html'
 	form_class = employee_form

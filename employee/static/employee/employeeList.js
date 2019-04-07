@@ -21,7 +21,7 @@ window.addEventListener("load", function(){
 		event.preventDefault();
 		var csrftoken = getCookie('csrftoken');      
 		  $.ajax({
-		    url: "http://127.0.0.1:8000/employee/delete",
+		    url: "http://93.125.18.60/employee/delete",
 		    beforeSend: function(xhr, settings) {
 		        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
 		            xhr.setRequestHeader("X-CSRFToken", csrftoken);
@@ -44,7 +44,7 @@ window.addEventListener("load", function(){
 		event.preventDefault();
 		var csrftoken = getCookie('csrftoken');      
 		  $.ajax({
-		    url: "http://127.0.0.1:8000/employee/current_rate",
+		    url: "http://93.125.18.60/employee/current_rate",
 		    beforeSend: function(xhr, settings) {
 		        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
 		            xhr.setRequestHeader("X-CSRFToken", csrftoken);
@@ -70,7 +70,7 @@ window.addEventListener("load", function(){
 		event.preventDefault();
 		var csrftoken = getCookie('csrftoken');      
 		  $.ajax({
-		    url: "http://127.0.0.1:8000/employee/new_rate",
+		    url: "http://93.125.18.60/employee/new_rate",
 		    beforeSend: function(xhr, settings) {
 		        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
 		            xhr.setRequestHeader("X-CSRFToken", csrftoken);

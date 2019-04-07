@@ -1,20 +1,51 @@
-{%  load static %}
+{% extends '../base.html' %}
+{% load static %}
 
+{% block title %}
+	<title>Работа с должностями</title>	
+{% endblock %}
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Должности</title>
-</head>
-<body>
-	<div>
-		<form action="#" method="post" autocomplete="off" class="container_form_left">
-			{% csrf_token  %}
-			{% for f in form %}
-				<div>{{f.label_tag}}{{f}}</div>										
-			{% endfor %}
-		</form>
-	</div>
+{% block link_script %}
+	<link rel="stylesheet" type="text/css" href="{% static 'positionForm/positionForm.css' %}">
+	<script src="{% static 'positionForm/positionForm.js' %}"></script>	
+{% endblock %}
 
-</body>
-</html>
+{% block content %}
+	<table class="table table-hover">
+	  <thead>
+	    <tr>
+	      <th scope="col">#</th>
+	      <th scope="col">Должность</th>	     
+	      <th scope="col">Оклад</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	  	{% for position in object_list|dictsort:"id" %}
+		  	<tr class="position">
+				<th scope="row">{{position.id}}</th>
+		    <td>{{position.position_name}}</td>
+		    <td>{{position.sallary}}</td>		      
+		    </tr>
+		{% endfor %}
+	  </tbody>
+	</table>	
+	<ul id="contextmenu">
+		<li id="new_position">Новая должность</li>
+		<li id="change_sallary">Изменить оклад</li>		
+	</ul>
+	<div class="around-form"></div>
+	<form id="sallary-enter" action="#">
+		<label  id="current-sallry">Текущее значение оклада:</label>
+		<span id="current-sallary-value"></span>
+		<label  id="new-sallary">Новое значение оклада:</label>
+		<input id="new-sallary-input" type="number" name="new-sallary" min='0'>
+		<button id="save-new-sallary">Сохранить</button>
+	</form>
+	<form id="position-enter" action="#">
+		<label  id="position-name">Новая должность:</label>
+		<input id="position-input" type="text">
+		<label  id="position-sallary">Оклад:</label>
+		<input id="position-sallary-input" type="number" min="0">
+		<button id="save-position">Сохранить</button>
+	</form>
+{% endblock %}

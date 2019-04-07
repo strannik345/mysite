@@ -1,0 +1,100 @@
+td{
+	cursor: pointer;
+}
+body{
+	height: 100vh;
+}
+#contextmenu{
+	width: 200px;
+	padding: 4px;
+	display: none;
+	border-radius: 4px;
+	background-color: #898989;
+	color: #FFFFFF;
+}
+#contextmenu>li{
+	display: block;
+	width: 200px;
+	height: 25px;
+	padding-left: 3px;
+}
+#contextmenu>li:hover{
+	color: #6AE191;
+	cursor: pointer;
+}
+.around-form{
+	display: none;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgba(0,0,0,0.4);
+}
+#current-sallary{
+	grid-area: cr;
+}
+
+#new-sallary{
+	grid-area: nr;
+}
+
+#new-sallary-input{
+	grid-area: nri;
+	width: 75px;
+}
+
+#save-new-sallary{
+	grid-area: snr;
+}
+
+#current-sallary-value{
+	grid-area: crv;
+	text-align: center;
+}
+
+#sallary-enter{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	width: 400px;
+	background-color: #6A848C;	
+	display: none;
+	grid-template-columns: 300px 100px;
+	grid-template-areas: 	"cr crv"
+							"nr nri"
+							"snr snr";
+}
+
+#position-name{
+	grid-area: pn;
+}
+
+#position-input{
+	grid-area: pi;
+}
+
+#position-sallary{
+	grid-area: ps;
+}
+
+#save-position{
+	grid-area: sp;
+}
+
+#position-enter{
+  padding: 10px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+  background-color: #6A848C;
+  grid-row-gap: 5px;	
+	display: none;
+	grid-template-columns: 150px 300px;
+	grid-template-areas: 	"pn pi"
+							"ps psi"
+							"sp sp";
+}

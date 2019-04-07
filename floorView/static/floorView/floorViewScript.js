@@ -2,27 +2,30 @@ var floor = 1;
 var room;
 window.addEventListener('load',function(){
   $("#price_per_night").on('click', function (event) {
-      console.log(room);
-      let csrftoken = getCookie('csrftoken');
-      $.ajax({
-        url: "http://127.0.0.1:8000/floorView/change_cost",
-        beforeSend: function(xhr, settings) {
-            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-                xhr.setRequestHeader("X-CSRFToken", csrftoken);
-            }
-            
-        },
-        type: "POST",
-        data: {'room' : room,
-              'new_cost' : Math.random(),
-              },
+      $("#modal").show();
+  });
+  $("#save").on('click', function () {
+    let csrftoken = getCookie('csrftoken');
+    $.ajax({
+      url: "http://93.125.18.60/floorView/change_cost",
+      beforeSend: function(xhr, settings) {
+          if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+              xhr.setRequestHeader("X-CSRFToken", csrftoken);
+          }
+          
+      },
+      type: "POST",
+      data: {'room' : room,
+            'new_cost' : $('#cost').val(),
+            },
+    })
+      .done(function(data){ 
+        $("#modal").hide();
+        ajax_room(room);                                                                  
       })
-        .done(function(data){ 
-          ajax_room(room);                                                              
-        })
-        .fail(function () {
-          console.log('error');
-        });
+      .fail(function () {
+        console.log('error');
+      });       
   });
 	var rooms=document.getElementsByClassName('room');
 	for (var i = 0; i < rooms.length; i++) {
@@ -86,7 +89,7 @@ window.addEventListener('load',function(){
 function ajax(){
 	let csrftoken = getCookie('csrftoken');
  	$.ajax({
-    url: "http://127.0.0.1:8000/floorView/rooms_occupied",
+    url: "http://93.125.18.60/floorView/rooms_occupied",
     beforeSend: function(xhr, settings) {
         if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
             xhr.setRequestHeader("X-CSRFToken", csrftoken);
@@ -132,7 +135,7 @@ function ajax(){
 function ajax_room(room){
 	var csrftoken = getCookie('csrftoken');
  	$.ajax({
-    url: "http://127.0.0.1:8000/floorView/room_info",
+    url: "http://93.125.18.60/floorView/room_info",
     beforeSend: function(xhr, settings) {
         if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
             xhr.setRequestHeader("X-CSRFToken", csrftoken);
@@ -162,6 +165,7 @@ function ajax_room(room){
       console.log('error');
     });
 }
+
 function show() {
   sessionStorage.setItem('room', this.className);
 	var modal=document.getElementsByClassName("grid_container");

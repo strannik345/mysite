@@ -203,3 +203,16 @@ body{
 .occupied{
 	background-color: red;
 }
+#modal{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	width: 400px;
+	background-color: rgb(161, 223, 137) ;
+	height: 20px;
+	display: none;
+	grid-template-columns: 200px 200px;
+	padding: 10px;
+	border-radius: 15px;
+}

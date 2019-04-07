@@ -31,7 +31,7 @@ function ajax(){
   document.getElementById('id_room_number').value='';            
   var csrftoken = getCookie('csrftoken');      
   $.ajax({
-    url: "http://127.0.0.1:8000/booking/check_in",
+    url: "http://93.125.18.60/booking/check_in",
     beforeSend: function(xhr, settings) {
         if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
             xhr.setRequestHeader("X-CSRFToken", csrftoken);
